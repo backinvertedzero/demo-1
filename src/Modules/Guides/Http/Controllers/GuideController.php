@@ -3,22 +3,21 @@
 namespace Modules\Guides\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Guides\Contracts\GuidesRepositoryContract;
 use Modules\Guides\Exceptions\EmptyGuideException;
 use Modules\Guides\Http\Resources\GuideResource;
-use App\Models\Guide;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class GuideController extends Controller
 {
     /**
-     * @param Request $request
+     * @param GuidesRepositoryContract $repositoryContract
      * @return AnonymousResourceCollection
      * @throws EmptyGuideException
      */
-    public function index(Request $request): AnonymousResourceCollection
+    public function index(GuidesRepositoryContract $repositoryContract): AnonymousResourceCollection
     {
-        $guides = Guide::active()->get();
+        $guides = $repositoryContract->getAvailableGuides();
 
         if ($guides->isEmpty()) {
             throw new EmptyGuideException('There are no guide found.');

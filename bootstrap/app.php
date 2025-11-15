@@ -1,9 +1,11 @@
 <?php
 
+use App\Exceptions\Handler;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -20,21 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (\Exception $exception, Request $request) {
             if ($request->is('api/*')) {
-                $state = 500;
-                if ($exception instanceof \Illuminate\Validation\ValidationException) {
-                    $errors = $exception->errors();
-                    $state = 400;
-                } elseif ($exception instanceof \App\Exceptions\BusinessValidationException) {
-                    $errors[] = $exception->getMessage();
-                    $state = 422;
-                } else {
-                    $errors[] = $exception->getMessage();
-                }
-
-                return new \Illuminate\Http\JsonResponse([
-                    'success' => false,
-                    'errors' => $errors,
-                ], $state);
+                return app(Handler::class)->render($exception);
             }
         });
     })->create();

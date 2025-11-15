@@ -1,0 +1,60 @@
+x-app: &app-tpl
+  restart: on-failure
+  volumes: &vols
+    - ..:/app
+  networks:
+    - internal
+  depends_on:
+    - mysql
+
+
+services:
+  # использовать подготовленный образ БД
+  mysql:
+    container_name: demo_1_mysql
+    image: mysql:8.0.40
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demo
+      - MYSQL_USER=demo
+      - MYSQL_PASSWORD=demo
+    volumes:
+      - ./my.cnf:/etc/mysql/my.cnf:ro
+    networks:
+      - internal
+    ports:
+      - 3307:3306
+
+  app:
+    container_name: demo_1_app
+    image: demo_1_app:latest
+    volumes:
+      - ..:/app
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    command:
+      - /bin/bash
+      - -c
+      - |
+        php-fpm
+
+
+  nginx:
+    container_name: demo_1_nginx
+    image: nginx:1.27-alpine
+    restart: on-failure
+    ports:
+      - 8001:80
+    volumes:
+      - ../:/app
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - internal
+    depends_on:
+      - app
+
+networks:
+  internal:

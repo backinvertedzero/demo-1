@@ -25,6 +25,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 if ($exception instanceof \Illuminate\Validation\ValidationException) {
                     $errors = $exception->errors();
                     $state = 400;
+                } elseif ($exception instanceof \App\Exceptions\BusinessValidationException) {
+                    $errors[] = $exception->getMessage();
+                    $state = 422;
                 } else {
                     $errors[] = $exception->getMessage();
                 }

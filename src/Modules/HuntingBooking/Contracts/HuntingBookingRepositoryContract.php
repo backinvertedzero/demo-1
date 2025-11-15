@@ -4,7 +4,7 @@ namespace Modules\HuntingBooking\Contracts;
 
 use Carbon\Carbon;
 use Modules\HuntingBooking\Dto\BookingData;
-use Modules\HuntingBooking\Exceptions\HuntingBookingException;
+use Modules\HuntingBooking\Exceptions\RepositoryException;
 
 interface HuntingBookingRepositoryContract
 {
@@ -18,7 +18,7 @@ interface HuntingBookingRepositoryContract
     /**
      * @param BookingData $data
      * @return void
-     * @throws HuntingBookingException
+     * @throws RepositoryException
      */
     public function store(BookingData $data): void;
 }

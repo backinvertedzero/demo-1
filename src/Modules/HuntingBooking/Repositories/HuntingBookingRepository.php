@@ -6,7 +6,7 @@ use App\Models\HuntingBooking;
 use Carbon\Carbon;
 use Modules\HuntingBooking\Contracts\HuntingBookingRepositoryContract;
 use Modules\HuntingBooking\Dto\BookingData;
-use Modules\HuntingBooking\Exceptions\HuntingBookingException;
+use Modules\HuntingBooking\Exceptions\RepositoryException;
 
 class HuntingBookingRepository implements HuntingBookingRepositoryContract
 {
@@ -24,7 +24,7 @@ class HuntingBookingRepository implements HuntingBookingRepositoryContract
     /**
      * @param BookingData $data
      * @return void
-     * @throws HuntingBookingException
+     * @throws RepositoryException
      */
     public function store(BookingData $data): void
     {
@@ -35,7 +35,7 @@ class HuntingBookingRepository implements HuntingBookingRepositoryContract
         $model->tour_name = $data->tourName;
         $model->participants_count = $data->participantsCount;
         if (!$model->save()) {
-            throw new HuntingBookingException();
+            throw new RepositoryException();
         }
     }
 }

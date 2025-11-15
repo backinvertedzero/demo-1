@@ -4,7 +4,7 @@ namespace Modules\HuntingBooking\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Modules\HuntingBooking\Exceptions\HuntingBookingException;
+use Modules\HuntingBooking\Exceptions\BaseBookingException;
 use Modules\HuntingBooking\Handlers\StoreHandler;
 use Modules\HuntingBooking\Http\Requests\HuntingBookingRequest;
 
@@ -22,7 +22,7 @@ class HuntingBookingController extends Controller
             return new JsonResponse([
                 'success' => true,
             ], 201);
-        } catch (HuntingBookingException $exception) {
+        } catch (BaseBookingException $exception) {
             return new JsonResponse([
                 'success' => false,
                 'errors' => [$exception->getMessage()],

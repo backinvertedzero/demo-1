@@ -4,7 +4,7 @@ namespace Modules\HuntingBooking\Handlers;
 
 use Modules\HuntingBooking\Contracts\HuntingBookingRepositoryContract;
 use Modules\HuntingBooking\Dto\BookingData;
-use Modules\HuntingBooking\Exceptions\HuntingBookingException;
+use Modules\HuntingBooking\Exceptions\RepositoryException;
 
 readonly class StoreHandler
 {
@@ -15,7 +15,7 @@ readonly class StoreHandler
     /**
      * @param BookingData $bookingData
      * @return void
-     * @throws HuntingBookingException
+     * @throws RepositoryException
      */
     public function handle(BookingData $bookingData): void
     {

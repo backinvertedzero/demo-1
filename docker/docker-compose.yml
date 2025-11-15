@@ -40,6 +40,10 @@ services:
       - -c
       - |
         php-fpm
+    networks:
+      - internal
+    depends_on:
+      - mysql
 
 
   nginx:

@@ -21,7 +21,7 @@ class HuntingBookingController extends Controller
             $handler->handle($request->makeDto());
             return new JsonResponse([
                 'success' => true,
-            ], 200);
+            ], 201);
         } catch (HuntingBookingException $exception) {
             return new JsonResponse([
                 'success' => false,

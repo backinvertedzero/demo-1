@@ -21,7 +21,7 @@ class GuideController extends Controller
         $guides = Guide::active()->get();
 
         if ($guides->isEmpty()) {
-            throw new EmptyGuideException('There are no guide for this date.');
+            throw new EmptyGuideException('There are no guide found.');
         }
 
         return GuideResource::collection($guides);

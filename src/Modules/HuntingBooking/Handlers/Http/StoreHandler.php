@@ -48,8 +48,9 @@ readonly class StoreHandler
 
     protected function validateParticipantsCount($participantsCount)
     {
-        if ($participantsCount > 10) {
-            throw new BookingValidationException("The number of participants must be least than 10.");
+        $maxCount = (int) config('system.params.booking_max_participants_count', 10);
+        if ($participantsCount > $maxCount) {
+            throw new BookingValidationException("The number of participants must be least than $maxCount.");
         }
     }
 

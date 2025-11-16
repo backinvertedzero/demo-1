@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\HuntingBooking\Handlers;
+namespace Modules\HuntingBooking\Handlers\Http;
 
 use Modules\HuntingBooking\Dto\BookingData;
 use Modules\HuntingBooking\Exceptions\BookingValidationException;

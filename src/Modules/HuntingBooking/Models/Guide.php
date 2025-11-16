@@ -4,6 +4,7 @@ namespace Modules\HuntingBooking\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use RuntimeException;
 
 /**
  * @property int $id
@@ -20,6 +21,23 @@ class Guide extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    protected $fillable = [];
+
+    public static function create(array $attributes = [])
+    {
+        throw new RuntimeException('BookingGuide is read-only model');
+    }
+
+    public function update(array $attributes = [], array $options = [])
+    {
+        throw new RuntimeException('BookingGuide is read-only model');
+    }
+
+    public function save(array $options = [])
+    {
+        throw new RuntimeException('BookingGuide is read-only model');
+    }
 
     public function scopeActive($query)
     {

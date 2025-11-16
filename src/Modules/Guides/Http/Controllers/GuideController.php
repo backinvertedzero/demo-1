@@ -3,10 +3,10 @@
 namespace Modules\Guides\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Modules\Guides\Contracts\GuidesRepositoryContract;
 use Modules\Guides\Exceptions\EmptyGuideListException;
 use Modules\Guides\Http\Resources\GuideResource;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class GuideController extends Controller
 {

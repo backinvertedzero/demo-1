@@ -33,8 +33,7 @@ class HuntingBookingRequest extends FormRequest
             ],
             'guide_id' => [
                 'required',
-                'guide_available',
-                'guide_available_for_date',
+                'exists:guides,id',
             ],
             'date' => [
                 'required',

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\HuntingBooking\Http\Controllers\HuntingBookingController;
 use Modules\Guides\Http\Controllers\GuideController;
+use Modules\HuntingBooking\Http\Controllers\HuntingBookingController;
 
 Route::prefix('bookings')->group(function () {
     Route::post('/', [HuntingBookingController::class, 'create']);

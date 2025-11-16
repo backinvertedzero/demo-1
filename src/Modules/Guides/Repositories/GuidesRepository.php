@@ -2,9 +2,9 @@
 
 namespace Modules\Guides\Repositories;
 
-use Modules\Guides\Models\Guide;
 use Illuminate\Support\Collection;
 use Modules\Guides\Contracts\GuidesRepositoryContract;
+use Modules\Guides\Models\Guide;
 
 class GuidesRepository implements GuidesRepositoryContract
 {

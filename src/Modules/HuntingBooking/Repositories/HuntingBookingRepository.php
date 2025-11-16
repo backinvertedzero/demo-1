@@ -2,11 +2,11 @@
 
 namespace Modules\HuntingBooking\Repositories;
 
-use Modules\HuntingBooking\Models\HuntingBooking;
 use Carbon\Carbon;
 use Modules\HuntingBooking\Contracts\HuntingBookingRepositoryContract;
 use Modules\HuntingBooking\Dto\BookingData;
 use Modules\HuntingBooking\Exceptions\StoreBookingException;
+use Modules\HuntingBooking\Models\HuntingBooking;
 
 class HuntingBookingRepository implements HuntingBookingRepositoryContract
 {

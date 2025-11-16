@@ -2,15 +2,11 @@
 
 namespace Modules\HuntingBooking\Contracts;
 
-use Modules\HuntingBooking\Exceptions\GuideNotFoundException;
-use Modules\HuntingBooking\Models\Guide;
-
 interface GuideRepositoryContract
 {
     /**
      * @param int $guideId
-     * @return Guide
-     * @throws GuideNotFoundException
+     * @return bool
      */
-    public function findById(int $guideId): Guide;
+    public function checkAvailable(int $guideId): bool;
 }

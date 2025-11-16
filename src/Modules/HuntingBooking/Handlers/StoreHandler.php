@@ -2,17 +2,17 @@
 
 namespace Modules\HuntingBooking\Handlers;
 
-use Modules\HuntingBooking\Contracts\GuideRepositoryContract;
-use Modules\HuntingBooking\Contracts\HuntingBookingRepositoryContract;
 use Modules\HuntingBooking\Dto\BookingData;
 use Modules\HuntingBooking\Exceptions\BookingValidationException;
 use Modules\HuntingBooking\Exceptions\StoreBookingException;
+use Modules\HuntingBooking\Repositories\GuideRepository;
+use Modules\HuntingBooking\Repositories\HuntingBookingRepository;
 
 readonly class StoreHandler
 {
     public function __construct(
-        private HuntingBookingRepositoryContract $bookingRepository,
-        private GuideRepositoryContract          $guideRepository,
+        private HuntingBookingRepository $bookingRepository,
+        private GuideRepository $guideRepository,
     )
     {
     }

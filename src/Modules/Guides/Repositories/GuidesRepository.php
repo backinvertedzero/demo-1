@@ -3,10 +3,9 @@
 namespace Modules\Guides\Repositories;
 
 use Illuminate\Support\Collection;
-use Modules\Guides\Contracts\GuidesRepositoryContract;
 use Modules\Guides\Models\Guide;
 
-class GuidesRepository implements GuidesRepositoryContract
+class GuidesRepository
 {
     /**
      * @return Collection

@@ -2,10 +2,10 @@
 
 namespace Modules\HuntingBooking\Repositories;
 
-use Modules\HuntingBooking\Contracts\GuideRepositoryContract;
+
 use Modules\HuntingBooking\Models\Guide;
 
-class GuideRepository implements GuideRepositoryContract
+class GuideRepository
 {
     /**
      * @param int $guideId

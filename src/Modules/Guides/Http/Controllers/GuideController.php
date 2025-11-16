@@ -4,18 +4,18 @@ namespace Modules\Guides\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Modules\Guides\Contracts\GuidesRepositoryContract;
+use Modules\Guides\Repositories\GuidesRepository;
 use Modules\Guides\Exceptions\EmptyGuideListException;
 use Modules\Guides\Http\Resources\GuideResource;
 
 class GuideController extends Controller
 {
     /**
-     * @param GuidesRepositoryContract $repositoryContract
+     * @param GuidesRepository $repositoryContract
      * @return AnonymousResourceCollection
      * @throws EmptyGuideListException
      */
-    public function index(GuidesRepositoryContract $repositoryContract): AnonymousResourceCollection
+    public function index(GuidesRepository $repositoryContract): AnonymousResourceCollection
     {
         $guides = $repositoryContract->getAvailableGuides();
 

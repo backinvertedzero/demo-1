@@ -2,22 +2,24 @@
 
 namespace Modules\HuntingBooking\Validators;
 
-use App\Models\Guide;
 use Illuminate\Contracts\Validation\Validator;
+use Modules\HuntingBooking\Contracts\GuideRepositoryContract;
 use Modules\HuntingBooking\Exceptions\BookingValidationException;
+use Modules\HuntingBooking\Exceptions\GuideNotFoundException;
 
 class GuideAvailabilityValidator
 {
+    public function __construct(private readonly GuideRepositoryContract $guideRepository) {}
+
     /**
      * Validate guide availability
      */
     public function validate($attribute, $value, $parameters, Validator $validator): bool
     {
-        /** @var Guide $guide */
-        $guide = Guide::find($value);
-
-        if (!$guide) {
-            throw new BookingValidationException('The guide is not found.');
+        try {
+            $guide = $this->guideRepository->findById($value);
+        } catch (GuideNotFoundException $exception) {
+            throw new BookingValidationException($exception->getMessage());
         }
 
         if (!$guide->is_active) {

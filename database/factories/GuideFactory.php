@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Guide;
+use Modules\Guides\Models\Guide;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class GuideFactory extends Factory
 {
+    protected $model = Guide::class;
+
     /**
      * Define the model's default state.
      *

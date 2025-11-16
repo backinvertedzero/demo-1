@@ -2,7 +2,7 @@
 
 namespace Modules\Guides\Repositories;
 
-use App\Models\Guide;
+use Modules\Guides\Models\Guide;
 use Illuminate\Support\Collection;
 use Modules\Guides\Contracts\GuidesRepositoryContract;
 

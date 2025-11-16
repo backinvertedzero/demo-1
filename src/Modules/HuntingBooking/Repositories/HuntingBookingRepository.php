@@ -2,7 +2,7 @@
 
 namespace Modules\HuntingBooking\Repositories;
 
-use App\Models\HuntingBooking;
+use Modules\HuntingBooking\Models\HuntingBooking;
 use Carbon\Carbon;
 use Modules\HuntingBooking\Contracts\HuntingBookingRepositoryContract;
 use Modules\HuntingBooking\Dto\BookingData;

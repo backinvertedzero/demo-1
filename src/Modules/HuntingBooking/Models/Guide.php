@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Modules\HuntingBooking\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,14 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Guide extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'name',
-        'experience_years',
-        'is_active',
-    ];
-
     protected $casts = [
         'is_active' => 'boolean',
         'created_at' => 'datetime',

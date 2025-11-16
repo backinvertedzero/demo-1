@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace Modules\HuntingBooking\Models;
 
 use Carbon\Carbon;
+use Database\Factories\HuntingBookingFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,4 +35,9 @@ class HuntingBooking extends Model
         'updated_at' => 'datetime',
     ];
 
+
+    protected static function newFactory()
+    {
+        return HuntingBookingFactory::new();
+    }
 }

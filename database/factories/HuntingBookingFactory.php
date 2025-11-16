@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Guide;
-use App\Models\HuntingBooking;
+use Modules\Guides\Models\Guide;
+use Modules\HuntingBooking\Models\HuntingBooking;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HuntingBooking>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\HuntingBooking\Models\HuntingBooking>
  */
 class HuntingBookingFactory extends Factory
 {
@@ -40,51 +40,6 @@ class HuntingBookingFactory extends Factory
         return $this->state(function (array $attributes) use ($guide) {
             return [
                 'guide_id' => $guide->id,
-            ];
-        });
-    }
-
-    public function withParticipants(int $count): self
-    {
-        return $this->state(function (array $attributes) use ($count) {
-            return [
-                'participants_count' => $count,
-            ];
-        });
-    }
-
-    public function onDate(string $date): self
-    {
-        return $this->state(function (array $attributes) use ($date) {
-            return [
-                'date' => $date,
-            ];
-        });
-    }
-
-    public function upcoming(): self
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'date' => $this->faker->dateTimeBetween('+1 day', '+1 month')->format('Y-m-d'),
-            ];
-        });
-    }
-
-    public function smallGroup(): self
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'participants_count' => $this->faker->numberBetween(1, 3),
-            ];
-        });
-    }
-
-    public function largeGroup(): self
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'participants_count' => $this->faker->numberBetween(4, 10),
             ];
         });
     }

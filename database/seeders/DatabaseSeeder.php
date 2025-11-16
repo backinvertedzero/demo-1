@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Guide;
-use App\Models\HuntingBooking;
+use Modules\Guides\Models\Guide;
+use Modules\HuntingBooking\Models\HuntingBooking;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
